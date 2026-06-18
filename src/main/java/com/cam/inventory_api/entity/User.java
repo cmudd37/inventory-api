@@ -3,6 +3,7 @@ package com.cam.inventory_api.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id

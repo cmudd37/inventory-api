@@ -7,16 +7,25 @@ public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String companyName;
     private String email;
-    private String phoneNumber;
+    private Integer phoneNumber;
 
     public Supplier() {}
 
-    public Supplier(String companyName, String email, String phoneNumber) {
+    public Supplier(Long id, String companyName, String email, Integer phoneNumber) {
+        this.id = id;
         this.companyName = companyName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCompanyName() {
@@ -35,11 +44,11 @@ public class Supplier {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
