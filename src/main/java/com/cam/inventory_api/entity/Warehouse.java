@@ -1,6 +1,5 @@
 package com.cam.inventory_api.entity;
 
-import jakarta.persistence.*;
 
 @Entity
 public class Warehouse {
