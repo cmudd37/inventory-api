@@ -12,6 +12,10 @@ public class Product {
     private double price;
     private int quantity;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     public Product() {}
 
     public Product(int id, String name, double price, int quantity) {

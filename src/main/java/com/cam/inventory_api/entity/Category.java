@@ -2,6 +2,8 @@ package com.cam.inventory_api.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Category {
 
@@ -10,6 +12,9 @@ public class Category {
     private Long id;
     private String name;
     private String description;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
 
     public Category() {}
 
