@@ -14,6 +14,15 @@ public class InventoryTransaction {
     private LocalDateTime transactionDate;
     private String transactionType;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "warehouse_id")
+    private Warehouse warehouse;
+
+
     public InventoryTransaction() {}
 
     public InventoryTransaction(Long id, Integer quantity, LocalDateTime transactionDate, String transactionType) {

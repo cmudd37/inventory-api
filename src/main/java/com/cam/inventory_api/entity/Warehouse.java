@@ -2,6 +2,8 @@ package com.cam.inventory_api.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Warehouse {
 
@@ -11,6 +13,9 @@ public class Warehouse {
     private String name;
     private String address;
     private Integer capacity;
+
+    @OneToMany(mappedBy = "warehouse")
+    private List<InventoryTransaction> transactions;
 
     public Warehouse() {}
 

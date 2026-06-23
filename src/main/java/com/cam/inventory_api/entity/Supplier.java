@@ -2,6 +2,8 @@ package com.cam.inventory_api.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Supplier {
 
@@ -11,6 +13,9 @@ public class Supplier {
     private String companyName;
     private String email;
     private Integer phoneNumber;
+
+    @OneToMany(mappedBy = "supplier")
+    private List<Product> products;
 
     public Supplier() {}
 
