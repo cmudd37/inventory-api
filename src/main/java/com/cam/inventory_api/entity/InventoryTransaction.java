@@ -1,5 +1,6 @@
 package com.cam.inventory_api.entity;
 
+import com.cam.inventory_api.enums.TransactionType;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -12,7 +13,9 @@ public class InventoryTransaction {
     private Long id;
     private Integer quantity;
     private LocalDateTime transactionDate;
-    private String transactionType;
+
+    @Enumerated(EnumType.STRING)
+    private TransactionType transactionType;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -25,7 +28,7 @@ public class InventoryTransaction {
 
     public InventoryTransaction() {}
 
-    public InventoryTransaction(Long id, Integer quantity, LocalDateTime transactionDate, String transactionType) {
+    public InventoryTransaction(Long id, Integer quantity, LocalDateTime transactionDate, TransactionType transactionType) {
         this.id = id;
         this.quantity = quantity;
         this.transactionDate = transactionDate;
@@ -56,11 +59,11 @@ public class InventoryTransaction {
         this.transactionDate = transactionDate;
     }
 
-    public String getTransactionType() {
+    public TransactionType getTransactionType() {
         return transactionType;
     }
 
-    public void setTransactionType(String transactionType) {
+    public void setTransactionType(TransactionType transactionType) {
         this.transactionType = transactionType;
     }
 
