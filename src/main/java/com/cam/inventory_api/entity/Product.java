@@ -12,7 +12,7 @@ public class Product {
     private Long id;
     private String name;
     private double price;
-    private int quantity;
+    private Integer quantity;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
