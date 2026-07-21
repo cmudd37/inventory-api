@@ -13,8 +13,7 @@ public interface InventoryTransactionService {
 
     List<InventoryTransactionResponse> getAllTransactions();
 
-    InventoryTransactionResponse updateTransaction(Long id,
-                                                   InventoryTransactionRequest request);
+    InventoryTransactionResponse updateTransaction(Long id, InventoryTransactionRequest request);
 
     void deleteTransaction(Long id);
 
