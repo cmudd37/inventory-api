@@ -3,7 +3,7 @@ package service;
 import com.cam.inventory_api.dto.InventoryTransactionRequest;
 import com.cam.inventory_api.dto.InventoryTransactionResponse;
 
-import java.util.*;
+import java.util.List;
 
 public interface InventoryTransactionService {
 
