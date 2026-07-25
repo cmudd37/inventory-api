@@ -1,13 +1,14 @@
-package service;
+package service.impl;
 
 import com.cam.inventory_api.dto.InventoryTransactionRequest;
 import com.cam.inventory_api.dto.InventoryTransactionResponse;
 import org.springframework.stereotype.Service;
+import service.InventoryTransactionService;
 
 import java.util.List;
 
 @Service
-public class InventoryTransactionImpl implements InventoryTransactionService {
+public class InventoryTransactionServiceImpl implements InventoryTransactionService {
 
     @Override
     public InventoryTransactionResponse createTransaction(InventoryTransactionRequest request) {
