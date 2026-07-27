@@ -28,11 +28,12 @@ public class InventoryTransaction {
 
     public InventoryTransaction() {}
 
-    public InventoryTransaction(Long id, Integer quantity, LocalDateTime transactionDate, TransactionType transactionType) {
-        this.id = id;
+    public InventoryTransaction(Product product, Warehouse warehouse, Integer quantity, TransactionType transactionType, LocalDateTime transactionDate) {
+        this.product = product;
+        this.warehouse = warehouse;
         this.quantity = quantity;
-        this.transactionDate = transactionDate;
         this.transactionType = transactionType;
+        this.transactionDate = transactionDate;
     }
 
     public Long getId() {
@@ -65,6 +66,22 @@ public class InventoryTransaction {
 
     public void setTransactionType(TransactionType transactionType) {
         this.transactionType = transactionType;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
     }
 
 }

@@ -1,11 +1,21 @@
 package com.cam.inventory_api.dto;
 
 import com.cam.inventory_api.enums.TransactionType;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 public class InventoryTransactionRequest {
+    @NotNull
     private Long productId;
+
+    @NotNull
     private Long warehouseId;
+
+    @NotNull
+    @Min(value = 1)
     private Integer quantity;
+
+    @NotNull
     private TransactionType transactionType;
 
     public InventoryTransactionRequest(Long productId, Long warehouseId, Integer quantity, TransactionType transactionType) {

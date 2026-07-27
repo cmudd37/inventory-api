@@ -2,20 +2,25 @@ package service.impl;
 
 import com.cam.inventory_api.dto.InventoryTransactionRequest;
 import com.cam.inventory_api.dto.InventoryTransactionResponse;
+import com.cam.inventory_api.entity.InventoryTransaction;
+import com.cam.inventory_api.entity.Product;
+import com.cam.inventory_api.entity.Warehouse;
+import com.cam.inventory_api.enums.TransactionType;
 import com.cam.inventory_api.repository.InventoryTransactionRepository;
 import com.cam.inventory_api.repository.ProductRepository;
 import com.cam.inventory_api.repository.WarehouseRepository;
 import org.springframework.stereotype.Service;
 import service.InventoryTransactionService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class InventoryTransactionServiceImpl implements InventoryTransactionService {
 
-    private ProductRepository productRepository;
-    private WarehouseRepository warehouseRepository;
-    private InventoryTransactionRepository inventoryTransactionRepository;
+    private final ProductRepository productRepository;
+    private final WarehouseRepository warehouseRepository;
+    private final InventoryTransactionRepository inventoryTransactionRepository;
 
     public InventoryTransactionServiceImpl(ProductRepository productRepository, WarehouseRepository warehouseRepository, InventoryTransactionRepository inventoryTransactionRepository) {
         this.productRepository = productRepository;
@@ -25,7 +30,25 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
 
     @Override
     public InventoryTransactionResponse createTransaction(InventoryTransactionRequest request) {
-        return null;
+        Product product = productRepository.findById(request.getProductId())
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        Warehouse warehouse = warehouseRepository.findById(request.getWarehouseId())
+                .orElseThrow(() -> new RuntimeException("Warehouse not found."));
+
+        if (request.getTransactionType() == TransactionType.SALE && request.getQuantity() > product.getQuantity()) {
+            throw new RuntimeException("Insufficient inventory.");
+        }
+
+        InventoryTransaction transaction = new InventoryTransaction(
+                product,
+                warehouse,
+                request.getQuantity(),
+                request.getTransactionType(),
+                LocalDateTime.now()
+        );
+
+
     }
 
     @Override

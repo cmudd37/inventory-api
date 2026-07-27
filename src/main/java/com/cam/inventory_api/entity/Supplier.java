@@ -19,8 +19,7 @@ public class Supplier {
 
     public Supplier() {}
 
-    public Supplier(Long id, String companyName, String email, Integer phoneNumber) {
-        this.id = id;
+    public Supplier(String companyName, String email, Integer phoneNumber) {
         this.companyName = companyName;
         this.email = email;
         this.phoneNumber = phoneNumber;

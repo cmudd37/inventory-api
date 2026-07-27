@@ -19,8 +19,7 @@ public class Warehouse {
 
     public Warehouse() {}
 
-    public Warehouse(Long id, String name, String address, Integer capacity) {
-        this.id = id;
+    public Warehouse(String name, String address, Integer capacity) {
         this.name = name;
         this. address = address;
         this.capacity = capacity;
