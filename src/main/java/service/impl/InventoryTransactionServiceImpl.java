@@ -49,19 +49,17 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
         );
 
 
-        if (request.getTransactionType() == TransactionType.PURCHASE) {
-            product.setCurrentStock(product.getCurrentStock() + request.getTransactionQuantity());
-        } else if (request.getTransactionType() == TransactionType.SALE) {
-            product.setCurrentStock(product.getCurrentStock() - request.getTransactionQuantity());
-        } else if (request.getTransactionType() == TransactionType.RETURN) {
-            product.setCurrentStock(product.getCurrentStock() + request.getTransactionQuantity());
-        } else if (request.getTransactionType() == TransactionType.ADJUSTMENT) {
-            product.setCurrentStock(request.getTransactionQuantity());
+        switch (request.getTransactionType()) {
+            case PURCHASE, RETURN -> product.setCurrentStock(product.getCurrentStock() + request.getTransactionQuantity());
+            case SALE -> product.setCurrentStock(product.getCurrentStock() - request.getTransactionQuantity());
+            case ADJUSTMENT -> product.setCurrentStock(request.getTransactionQuantity());
         }
 
+        productRepository.save(product);
 
+        InventoryTransaction savedTransaction = inventoryTransactionRepository.save(transaction);
 
-
+        return mapToResponse(savedTransaction);
 
     }
 
@@ -83,5 +81,18 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
     @Override
     public void deleteTransaction(Long id) {
 
+    }
+
+    public InventoryTransactionResponse mapToResponse(InventoryTransaction transaction) {
+        return new InventoryTransactionResponse(
+                transaction.getId(),
+                transaction.getProduct().getId(),
+                transaction.getProduct().getName(),
+                transaction.getWarehouse().getId(),
+                transaction.getWarehouse().getName(),
+                transaction.getTransactionQuantity(),
+                transaction.getTransactionType(),
+                transaction.getTransactionDate()
+        );
     }
 }

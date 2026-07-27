@@ -10,17 +10,17 @@ public class InventoryTransactionResponse {
     private String productName;
     private Long warehouseId;
     private String warehouseName;
-    private Integer quantity;
+    private Integer transactionQuantity;
     private TransactionType transactionType;
     private LocalDateTime transactionDate;
 
-    public InventoryTransactionResponse(Long transactionId,Long productId, String productName, Long warehouseId, String warehouseName, Integer quantity, TransactionType transactionType, LocalDateTime transactionDate) {
+    public InventoryTransactionResponse(Long transactionId, Long productId, String productName, Long warehouseId, String warehouseName, Integer transactionQuantity, TransactionType transactionType, LocalDateTime transactionDate) {
         this.transactionId = transactionId;
         this.productId = productId;
         this.productName = productName;
         this.warehouseId = warehouseId;
         this.warehouseName = warehouseName;
-        this.quantity = quantity;
+        this.transactionQuantity = transactionQuantity;
         this.transactionType = transactionType;
         this.transactionDate = transactionDate;
     }
@@ -65,12 +65,12 @@ public class InventoryTransactionResponse {
         this.warehouseName = warehouseName;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getTransactionQuantityQuantity() {
+        return transactionQuantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setQuantity(Integer transactionQuantity) {
+        this.transactionQuantity = transactionQuantity;
     }
 
     public TransactionType getTransactionType() {
