@@ -11,7 +11,7 @@ public class InventoryTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer quantity;
+    private Integer transactionQuantity;
     private LocalDateTime transactionDate;
 
     @Enumerated(EnumType.STRING)
@@ -28,10 +28,10 @@ public class InventoryTransaction {
 
     public InventoryTransaction() {}
 
-    public InventoryTransaction(Product product, Warehouse warehouse, Integer quantity, TransactionType transactionType, LocalDateTime transactionDate) {
+    public InventoryTransaction(Product product, Warehouse warehouse, Integer transactionQuantity, TransactionType transactionType, LocalDateTime transactionDate) {
         this.product = product;
         this.warehouse = warehouse;
-        this.quantity = quantity;
+        this.transactionQuantity = transactionQuantity;
         this.transactionType = transactionType;
         this.transactionDate = transactionDate;
     }
@@ -44,12 +44,12 @@ public class InventoryTransaction {
         this.id = id;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getTransactionQuantity() {
+        return transactionQuantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setTransactionQuantity(Integer quantity) {
+        this.transactionQuantity = quantity;
     }
 
     public LocalDateTime getTransactionDate() {

@@ -12,7 +12,7 @@ public class Product {
     private Long id;
     private String name;
     private double price;
-    private Integer quantity;
+    private Integer currentStock;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -27,10 +27,10 @@ public class Product {
 
     public Product() {}
 
-    public Product(String name, double price, int quantity) {
+    public Product(String name, double price, int currentStock) {
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
+        this.currentStock = currentStock;
     }
 
     public Long getId() {
@@ -57,12 +57,12 @@ public class Product {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getCurrentStock() {
+        return currentStock;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCurrentStock(int currentStock) {
+        this.currentStock = currentStock;
     }
 
 }

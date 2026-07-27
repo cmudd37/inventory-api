@@ -13,15 +13,15 @@ public class InventoryTransactionRequest {
 
     @NotNull
     @Min(value = 1)
-    private Integer quantity;
+    private Integer transactionQuantity;
 
     @NotNull
     private TransactionType transactionType;
 
-    public InventoryTransactionRequest(Long productId, Long warehouseId, Integer quantity, TransactionType transactionType) {
+    public InventoryTransactionRequest(Long productId, Long warehouseId, Integer transactionQuantity, TransactionType transactionType) {
         this.productId = productId;
         this.warehouseId = warehouseId;
-        this.quantity = quantity;
+        this.transactionQuantity = transactionQuantity;
         this.transactionType = transactionType;
     }
 
@@ -41,12 +41,12 @@ public class InventoryTransactionRequest {
         this.warehouseId = warehouseId;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getTransactionQuantity() {
+        return transactionQuantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setQuantity(Integer transactionQuantity) {
+        this.transactionQuantity = transactionQuantity;
     }
 
     public TransactionType getTransactionType() {

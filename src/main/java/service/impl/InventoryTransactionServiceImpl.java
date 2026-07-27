@@ -36,17 +36,31 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
         Warehouse warehouse = warehouseRepository.findById(request.getWarehouseId())
                 .orElseThrow(() -> new RuntimeException("Warehouse not found."));
 
-        if (request.getTransactionType() == TransactionType.SALE && request.getQuantity() > product.getQuantity()) {
+        if (request.getTransactionType() == TransactionType.SALE && request.getTransactionQuantity() > product.getCurrentStock()) {
             throw new RuntimeException("Insufficient inventory.");
         }
 
         InventoryTransaction transaction = new InventoryTransaction(
                 product,
                 warehouse,
-                request.getQuantity(),
+                request.getTransactionQuantity(),
                 request.getTransactionType(),
                 LocalDateTime.now()
         );
+
+
+        if (request.getTransactionType() == TransactionType.PURCHASE) {
+            product.setCurrentStock(product.getCurrentStock() + request.getTransactionQuantity());
+        } else if (request.getTransactionType() == TransactionType.SALE) {
+            product.setCurrentStock(product.getCurrentStock() - request.getTransactionQuantity());
+        } else if (request.getTransactionType() == TransactionType.RETURN) {
+            product.setCurrentStock(product.getCurrentStock() + request.getTransactionQuantity());
+        } else if (request.getTransactionType() == TransactionType.ADJUSTMENT) {
+            product.setCurrentStock(request.getTransactionQuantity());
+        }
+
+
+
 
 
     }
