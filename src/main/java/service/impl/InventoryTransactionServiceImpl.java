@@ -14,6 +14,7 @@ import service.InventoryTransactionService;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InventoryTransactionServiceImpl implements InventoryTransactionService {
@@ -65,12 +66,18 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
 
     @Override
     public InventoryTransactionResponse getTransactionById(Long id) {
-        return null;
+        InventoryTransaction inventoryTransaction = inventoryTransactionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Inventory transaction not found."));
+
+        return mapToResponse(inventoryTransaction);
     }
 
     @Override
     public List<InventoryTransactionResponse> getAllTransactions() {
-        return List.of();
+        return inventoryTransactionRepository.findAll()
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
     }
 
     @Override
