@@ -1,4 +1,4 @@
-package service.impl;
+package com.cam.inventory_api.service.impl;
 
 import com.cam.inventory_api.dto.InventoryTransactionRequest;
 import com.cam.inventory_api.dto.InventoryTransactionResponse;
@@ -9,9 +9,8 @@ import com.cam.inventory_api.enums.TransactionType;
 import com.cam.inventory_api.repository.InventoryTransactionRepository;
 import com.cam.inventory_api.repository.ProductRepository;
 import com.cam.inventory_api.repository.WarehouseRepository;
+import com.cam.inventory_api.service.InventoryTransactionService;
 import org.springframework.stereotype.Service;
-import service.InventoryTransactionService;
-
 import java.time.LocalDateTime;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package service;
+package com.cam.inventory_api.service;
 
 import com.cam.inventory_api.dto.InventoryTransactionRequest;
 import com.cam.inventory_api.dto.InventoryTransactionResponse;
