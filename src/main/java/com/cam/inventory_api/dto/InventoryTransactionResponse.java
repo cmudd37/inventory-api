@@ -65,7 +65,7 @@ public class InventoryTransactionResponse {
         this.warehouseName = warehouseName;
     }
 
-    public Integer getTransactionQuantityQuantity() {
+    public Integer getTransactionQuantity() {
         return transactionQuantity;
     }
 

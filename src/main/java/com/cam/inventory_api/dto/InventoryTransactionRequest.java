@@ -18,6 +18,8 @@ public class InventoryTransactionRequest {
     @NotNull
     private TransactionType transactionType;
 
+    public InventoryTransactionRequest() {}
+
     public InventoryTransactionRequest(Long productId, Long warehouseId, Integer transactionQuantity, TransactionType transactionType) {
         this.productId = productId;
         this.warehouseId = warehouseId;

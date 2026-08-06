@@ -19,11 +19,13 @@ public class Supplier {
 
     public Supplier() {}
 
-    public Supplier(String companyName, String email, Integer phoneNumber) {
+    public Supplier(Long id, String companyName, String email, Integer phoneNumber) {
+        this.id = id;
         this.companyName = companyName;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+
     public Long getId() {
         return id;
     }
