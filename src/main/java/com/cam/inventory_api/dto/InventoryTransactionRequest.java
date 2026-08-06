@@ -45,7 +45,7 @@ public class InventoryTransactionRequest {
         return transactionQuantity;
     }
 
-    public void setQuantity(Integer transactionQuantity) {
+    public void setTransactionQuantity(Integer transactionQuantity) {
         this.transactionQuantity = transactionQuantity;
     }
 
