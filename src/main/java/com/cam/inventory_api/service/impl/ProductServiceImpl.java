@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductResponse> getALLProducts() {
+    public List<ProductResponse> getAllProducts() {
         return productRepository.findAll()
                 .stream()
                 .map(this::mapToResponse)
@@ -68,11 +68,17 @@ public class ProductServiceImpl implements ProductService {
         Product exisitingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found."));
 
-        request.setName(request.getName());
-        request.setPrice(request.getPrice());
-        request.setCurrentStock(request.getCurrentStock());
-        request.setCategoryId(request.getCategoryId());
-        request.setSupplierId(request.getSupplierId());
+        Category category = categoryRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Category not found."));
+
+        Supplier supplier = supplierRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Supplier not found."));
+
+        exisitingProduct.setName(request.getName());
+        exisitingProduct.setPrice(request.getPrice());
+        exisitingProduct.setCurrentStock(request.getCurrentStock());
+        exisitingProduct.setCategory(category);
+        exisitingProduct.setSupplier(supplier);
 
         Product savedProduct = productRepository.save(exisitingProduct);
 
@@ -81,7 +87,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deleteProductById(Long id) {
-        productRepository.deleteById(id);
+        Product product = productRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Product not found."));
+
+        productRepository.delete(product);
     }
 
     public ProductResponse mapToResponse(Product product) {
