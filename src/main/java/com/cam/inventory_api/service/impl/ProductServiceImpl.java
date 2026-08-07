@@ -60,23 +60,23 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
 
-        Product saveProduct = productRepository.save(product);
-
-        return mapToResponse(saveProduct);
+        return mapToResponse(product);
     }
 
     @Override
-    public ProductResponse updateProduct(Long id, Product updatedProduct) {
+    public ProductResponse updateProduct(Long id, ProductRequest request) {
         Product exisitingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found."));
 
-        exisitingProduct.setName(updatedProduct.getName());
-        exisitingProduct.setPrice(updatedProduct.getPrice());
-        exisitingProduct.setCurrentStock(updatedProduct.getCurrentStock());
-        exisitingProduct.setCategory(updatedProduct.getCategory());
-        exisitingProduct.setSupplier(updatedProduct.getSupplier());
+        request.setName(request.getName());
+        request.setPrice(request.getPrice());
+        request.setCurrentStock(request.getCurrentStock());
+        request.setCategoryId(request.getCategoryId());
+        request.setSupplierId(request.getSupplierId());
 
-        return mapToResponse(exisitingProduct);
+        Product savedProduct = productRepository.save(exisitingProduct);
+
+        return mapToResponse(savedProduct);
     }
 
     @Override
