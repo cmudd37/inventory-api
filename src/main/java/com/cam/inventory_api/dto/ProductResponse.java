@@ -3,14 +3,16 @@ package com.cam.inventory_api.dto;
 public class ProductResponse {
     private Long productId;
     private String productName;
+    private Long supplierId;
     private String supplier;
+    private Long categoryId;
     private String category;
     private double price;
     private Integer currentStock;
 
     public ProductResponse() {}
 
-    public ProductResponse(Long productId, String productName, String supplier, String category, double price, Integer currentStock) {
+    public ProductResponse(Long productId, String productName, Long supplierId, String supplier, Long categoryId, String category, double price, Integer currentStock) {
         this.productId = productId;
         this.productName = productName;
         this.supplier = supplier;
@@ -35,12 +37,28 @@ public class ProductResponse {
         this.productName = productName;
     }
 
+    public Long getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(Long supplierId) {
+        this.supplierId = supplierId;
+    }
+
     public String getSupplier() {
         return supplier;
     }
 
     public void setSupplier(String supplier) {
         this.supplier = supplier;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getCategory() {

@@ -27,10 +27,12 @@ public class Product {
 
     public Product() {}
 
-    public Product(String name, double price, int currentStock) {
+    public Product(String name, double price, Integer currentStock, Category category, Supplier supplier) {
         this.name = name;
         this.price = price;
         this.currentStock = currentStock;
+        this.category = category;
+        this.supplier = supplier;
     }
 
     public Long getId() {
@@ -57,12 +59,28 @@ public class Product {
         this.price = price;
     }
 
-    public int getCurrentStock() {
+    public Integer getCurrentStock() {
         return currentStock;
     }
 
-    public void setCurrentStock(int currentStock) {
+    public void setCurrentStock(Integer currentStock) {
         this.currentStock = currentStock;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
 
 }
