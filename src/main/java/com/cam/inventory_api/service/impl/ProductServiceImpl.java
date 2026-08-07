@@ -49,22 +49,39 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponse> getALLProducts() {
-        return List.of();
+        return productRepository.findAll()
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
     }
 
     @Override
     public ProductResponse getProductById(Long id) {
-        return null;
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        Product saveProduct = productRepository.save(product);
+
+        return mapToResponse(saveProduct);
     }
 
     @Override
     public ProductResponse updateProduct(Long id, Product updatedProduct) {
-        return null;
+        Product exisitingProduct = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found."));
+
+        exisitingProduct.setName(updatedProduct.getName());
+        exisitingProduct.setPrice(updatedProduct.getPrice());
+        exisitingProduct.setCurrentStock(updatedProduct.getCurrentStock());
+        exisitingProduct.setCategory(updatedProduct.getCategory());
+        exisitingProduct.setSupplier(updatedProduct.getSupplier());
+
+        return mapToResponse(exisitingProduct);
     }
 
     @Override
-    public ProductResponse deleteProductById(Long id) {
-        return null;
+    public void deleteProductById(Long id) {
+        productRepository.deleteById(id);
     }
 
     public ProductResponse mapToResponse(Product product) {
