@@ -60,7 +60,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         warehouseRepository.delete(warehouse);
     }
 
-    public WarehouseResponse mapToResponse(Warehouse warehouse) {
+    private WarehouseResponse mapToResponse(Warehouse warehouse) {
         return new WarehouseResponse(
                 warehouse.getId(),
                 warehouse.getName(),

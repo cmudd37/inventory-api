@@ -93,7 +93,7 @@ public class ProductServiceImpl implements ProductService {
         productRepository.delete(product);
     }
 
-    public ProductResponse mapToResponse(Product product) {
+    private ProductResponse mapToResponse(Product product) {
         return new ProductResponse(
                 product.getId(),
                 product.getName(),

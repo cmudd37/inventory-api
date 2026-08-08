@@ -58,7 +58,7 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.delete(category);
     }
 
-    public CategoryResponse mapToResponse(Category category) {
+    private CategoryResponse mapToResponse(Category category) {
         return new CategoryResponse(
                 category.getId(),
                 category.getName(),

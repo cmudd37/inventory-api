@@ -89,7 +89,7 @@ public class InventoryTransactionServiceImpl implements InventoryTransactionServ
                 .toList();
     }
 
-    public InventoryTransactionResponse mapToResponse(InventoryTransaction transaction) {
+    private InventoryTransactionResponse mapToResponse(InventoryTransaction transaction) {
         return new InventoryTransactionResponse(
                 transaction.getId(),
                 transaction.getProduct().getId(),
