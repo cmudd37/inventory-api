@@ -33,7 +33,7 @@ public class WarehouseController {
     }
 
     @PutMapping("/{id}")
-    public WarehouseResponse updateWarehouse(@PathVariable Long id, @RequestBody WarehouseRequest request) {
+    public WarehouseResponse updateWarehouse(@PathVariable Long id, @Valid @RequestBody WarehouseRequest request) {
         return warehouseService.updateWarehouse(id, request);
     }
 

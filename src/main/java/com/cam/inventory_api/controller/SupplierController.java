@@ -33,7 +33,7 @@ public class SupplierController {
     }
 
     @PutMapping("/{id}")
-    public SupplierResponse updateSupplier(@PathVariable Long id, @RequestBody SupplierRequest request) {
+    public SupplierResponse updateSupplier(@PathVariable Long id, @Valid @RequestBody SupplierRequest request) {
         return supplierService.updateSupplier(id, request);
     }
 
