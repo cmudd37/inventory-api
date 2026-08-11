@@ -8,6 +8,8 @@ import java.util.List;
 public interface WarehouseService {
     public WarehouseResponse createWarehouse(WarehouseRequest request);
 
+    public WarehouseResponse getWarehouseById(Long id);
+
     public List<WarehouseResponse> getAllWarehouses();
 
     public WarehouseResponse updateWarehouse(Long id, WarehouseRequest request);

@@ -33,6 +33,14 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
+    public SupplierResponse getSupplierById(Long id) {
+        Supplier supplier = supplierRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Supplier not found."));
+
+        return mapToResponse(supplier);
+    }
+
+    @Override
     public List<SupplierResponse> getAllSuppliers() {
        return supplierRepository.findAll()
                .stream()

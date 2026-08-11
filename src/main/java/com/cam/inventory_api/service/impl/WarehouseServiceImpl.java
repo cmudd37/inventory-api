@@ -31,6 +31,14 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
+    public WarehouseResponse getWarehouseById(Long id) {
+        Warehouse warehouse = warehouseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Warehouse not found."));
+
+        return mapToResponse(warehouse);
+    }
+
+    @Override
     public List<WarehouseResponse> getAllWarehouses() {
         return warehouseRepository.findAll()
                 .stream()

@@ -9,6 +9,8 @@ public interface SupplierService {
 
     public SupplierResponse createSupplier(SupplierRequest supplierRequest);
 
+    public SupplierResponse getSupplierById(Long id);
+
     public List<SupplierResponse> getAllSuppliers();
 
     public SupplierResponse updateSupplier(Long id, SupplierRequest supplierRequest);
