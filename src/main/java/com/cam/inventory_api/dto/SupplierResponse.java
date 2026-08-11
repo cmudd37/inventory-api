@@ -4,11 +4,11 @@ public class SupplierResponse {
     private Long supplierId;
     private String name;
     private String email;
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     public SupplierResponse() {}
 
-    public SupplierResponse(Long supplierId, String name, String email, Integer phoneNumber) {
+    public SupplierResponse(Long supplierId, String name, String email, String phoneNumber) {
         this.supplierId = supplierId;
         this.name = name;
         this.email = email;
@@ -39,11 +39,11 @@ public class SupplierResponse {
         this.email = email;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

@@ -1,6 +1,7 @@
 package com.cam.inventory_api.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class SupplierRequest {
     @NotBlank
@@ -10,11 +11,11 @@ public class SupplierRequest {
     private String email;
 
     @NotBlank
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     public SupplierRequest() {}
 
-    public SupplierRequest(String name, String email, Integer phoneNumber) {
+    public SupplierRequest(String name, String email, String phoneNumber) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -36,11 +37,11 @@ public class SupplierRequest {
         this.email = email;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }

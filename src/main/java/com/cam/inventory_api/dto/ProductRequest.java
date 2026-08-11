@@ -8,7 +8,7 @@ public class ProductRequest {
     @NotBlank
     private String name;
 
-    @NotBlank
+    @NotNull
     private Long supplierId;
 
     @NotNull

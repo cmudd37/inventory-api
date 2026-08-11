@@ -12,14 +12,14 @@ public class Supplier {
     private Long id;
     private String companyName;
     private String email;
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "supplier")
     private List<Product> products;
 
     public Supplier() {}
 
-    public Supplier(String companyName, String email, Integer phoneNumber) {
+    public Supplier(String companyName, String email, String phoneNumber) {
         this.companyName = companyName;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -49,11 +49,11 @@ public class Supplier {
         this.email = email;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
