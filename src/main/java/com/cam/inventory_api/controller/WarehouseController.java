@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/warehouses")
 public class WarehouseController {
+
     private final WarehouseService warehouseService;
 
     public WarehouseController(WarehouseService warehouseService) {
@@ -41,6 +42,5 @@ public class WarehouseController {
     public void deleteWarehouse(@PathVariable Long id) {
         warehouseService.deleteWarehouseById(id);
     }
-
 
 }

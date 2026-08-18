@@ -38,9 +38,4 @@ public class InventoryTransactionController {
         return inventoryTransactionService.getTransactionsByProduct(productId);
     }
 
-
-
-
-
-
 }

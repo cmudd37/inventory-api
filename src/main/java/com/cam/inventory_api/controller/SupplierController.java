@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/suppliers")
 public class SupplierController {
+
     private final SupplierService supplierService;
 
     public SupplierController(SupplierService supplierService) {
@@ -41,4 +42,5 @@ public class SupplierController {
     public void deleteSupplierById(@PathVariable Long id) {
         supplierService.deleteSupplierById(id);
     }
+
 }
