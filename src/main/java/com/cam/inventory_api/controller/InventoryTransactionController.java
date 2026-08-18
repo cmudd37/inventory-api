@@ -33,7 +33,7 @@ public class InventoryTransactionController {
         return inventoryTransactionService.getAllTransactions();
     }
 
-    @GetMapping("/product/{productId}")
+    @GetMapping("/products/{productId}")
     public List<InventoryTransactionResponse> getTransactionByProduct(@PathVariable Long productId) {
         return inventoryTransactionService.getTransactionsByProduct(productId);
     }
